@@ -5,15 +5,15 @@ include_once 'common/Fechas.php';
 include_once 'common/Helpers.php';
 
 
-$file = fopen("archivo.txt", "w");
+// $file = fopen("archivo.txt", "w");
 
-// fwrite($file, "Esto es una nueva linea de texto" . PHP_EOL);
+// // fwrite($file, "Esto es una nueva linea de texto" . PHP_EOL);
 
-// fwrite($file, "Otra más" . PHP_EOL);
+// // fwrite($file, "Otra más" . PHP_EOL);
 
-fwrite($file, json_encode($_POST));
+// fwrite($file, json_encode($_POST));
 
-fclose($file);
+// fclose($file);
 
 
 
@@ -21,13 +21,20 @@ fclose($file);
 // 
 
 
-if($_POST["identidad"] == 17){
+if($_POST["identidad"] == 24){
 require_once ('ticket/autoload.php'); 
 include_once 'facturas/'.$_POST["identidad"].'/Impresiones.php';
 	$fac = new Impresiones();
-// 	$fac->Factura($_POST); //2
 
+if($_POST["tipoticket"] == 2){
+	$fac->Factura($_POST); //2
+}
+
+if($_POST["tipoticket"] == 3){
 	$fac->CreditoFiscal($_POST); //3
+}
+
+
 }
 
 
