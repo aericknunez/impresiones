@@ -20,20 +20,34 @@ include_once 'common/Helpers.php';
 // echo json_encode($_POST);
 // 
 
+if($_POST["identidad"] == 17){ // prueba
+	require_once ('ticket/autoload.php'); 
+	include_once 'facturas/'.$_POST["identidad"].'/Impresiones.php';
+		$fac = new Impresiones();
+
+	if($_POST["tipoticket"] == 2){
+		$fac->Factura($_POST); //2
+	}
+
+	if($_POST["tipoticket"] == 3){
+		$fac->CreditoFiscal($_POST); //3
+	}
+
+}
+
 
 if($_POST["identidad"] == 24){
-require_once ('ticket/autoload.php'); 
-include_once 'facturas/'.$_POST["identidad"].'/Impresiones.php';
-	$fac = new Impresiones();
+	require_once ('ticket/autoload.php'); 
+	include_once 'facturas/'.$_POST["identidad"].'/Impresiones.php';
+		$fac = new Impresiones();
 
-if($_POST["tipoticket"] == 2){
-	$fac->Factura($_POST); //2
-}
+	if($_POST["tipoticket"] == 2){
+		$fac->Factura($_POST); //2
+	}
 
-if($_POST["tipoticket"] == 3){
-	$fac->CreditoFiscal($_POST); //3
-}
-
+	if($_POST["tipoticket"] == 3){
+		$fac->CreditoFiscal($_POST); //3
+	}
 
 }
 
