@@ -5,15 +5,15 @@ include_once 'common/Fechas.php';
 include_once 'common/Helpers.php';
 
 
-// $file = fopen("archivo.txt", "w");
+$file = fopen("archivo.txt", "w");
 
-// // fwrite($file, "Esto es una nueva linea de texto" . PHP_EOL);
+// fwrite($file, "Esto es una nueva linea de texto" . PHP_EOL);
 
-// // fwrite($file, "Otra más" . PHP_EOL);
+// fwrite($file, "Otra más" . PHP_EOL);
 
-// fwrite($file, json_encode($_POST));
+fwrite($file, json_encode($_POST));
 
-// fclose($file);
+fclose($file);
 
 
 
@@ -49,6 +49,9 @@ if($_POST["identidad"] == 24){
 		$fac->CreditoFiscal($_POST); //3
 	}
 
+	if($_POST["tipoticket"] == 4){
+		$fac->Exportaciones($_POST); //4
+	}
 }
 
 
