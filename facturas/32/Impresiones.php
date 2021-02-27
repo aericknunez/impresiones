@@ -49,7 +49,7 @@ $printer->feed();
 $printer->text("Tel: " . $data["c_telefono"]);
 
 $printer->feed();
-$printer->text("FACTURA NUMERO: " . $numero);
+$printer->text("FACTURA NUMERO: " . $data["num_fac"]);
 
 
 /* Stuff around with left margin */
@@ -91,21 +91,27 @@ $printer -> text($this->DosCol("TOTAL $:", 40, Helpers::Format($data["total"]), 
 $printer -> text("____________________________________________________________");
 $printer->feed();
 
+if($data["efectivo"] != 0){
+  $cambio = $data["efectivo"] - $data["total"];
+  $efectivo = $data["efectivo"];
+} else {
+  $cambio = "0.00";
+  $efectivo = $data["total"];
+}
 
-
-$printer -> text($this->DosCol("Efectivo $:", 40, Helpers::Format($data["efectivo"]), 20));
+$printer -> text($this->DosCol("Efectivo $:", 40, Helpers::Format($efectivo), 20));
 
 //cambio
-$printer -> text($this->DosCol("Cambio $:", 40, Helpers::Format($data["efectivo"] - $data["total"]), 20));
+$printer -> text($this->DosCol("Cambio $:", 40, Helpers::Format($cambio), 20));
 
 
 $printer -> text("____________________________________________________________");
 $printer->feed();
 
 
-$printer -> text($this->DosCol($fechaf, 30, $horaf, 30));
+$printer -> text($this->DosCol(date("d-m-Y"), 30, date("H:i:s"), 30));
 
-$printer -> text("Cajero: " . $_SESSION['nombre']);
+$printer -> text("Cajero: " . $data["cajero"]);
 
 $printer->feed();
 $printer -> setJustification(Printer::JUSTIFY_CENTER);
@@ -247,8 +253,8 @@ $printer->close();
 
  public function Item($cant,  $name = '', $price = '', $total = '', $dollarSign = false)
     {
-        $rightCols = 8;
-        $leftCols = 38;
+        $rightCols = 10;
+        $leftCols = 42;
         if ($dollarSign) {
             $leftCols = $leftCols / 2 - $rightCols / 2;
         }
