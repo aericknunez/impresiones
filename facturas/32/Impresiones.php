@@ -32,12 +32,14 @@ $printer -> setLineSpacing(80);
 // $printer -> setJustification(Printer::JUSTIFY_CENTER);
 // $logo = EscposImage::load($img, false);
 // $printer->bitImage($logo);
-$printer -> setJustification(Printer::JUSTIFY_LEFT);
+$printer -> setJustification(Printer::JUSTIFY_CENTER);
 
 $printer->text($data["c_cliente"]);
 
 $printer->feed();
 $printer->text($data["c_giro"]);
+
+$printer -> setJustification(Printer::JUSTIFY_LEFT);
 
 $printer->feed();
 $printer->text($data["c_nombre"]);
@@ -49,13 +51,13 @@ $printer->feed();
 $printer->text("Tel: " . $data["c_telefono"]);
 
 $printer->feed();
-$printer->text("FACTURA NUMERO: " . $data["num_fac"]);
+$printer->text("TICKET NUMERO: " . $data["num_fac"]);
 
 
 /* Stuff around with left margin */
 $printer->feed();
 $printer -> setJustification(Printer::JUSTIFY_CENTER);
-$printer -> text("____________________________________________________________");
+$printer -> text("_______________________________________________________");
 $printer -> setJustification(Printer::JUSTIFY_LEFT);
 $printer->feed();
 /* Items */
@@ -74,21 +76,21 @@ $printer -> setEmphasis(false);
 
 
 
-$printer -> text("____________________________________________________________");
+$printer -> text("_______________________________________________________");
 $printer->feed();
 
 
-$printer -> text($this->DosCol("Sub Total $:", 40, Helpers::Format($data["total"]), 20));
+$printer -> text($this->DosCol("Sub Total $:", 40, Helpers::Format($data["total"]), 10));
 
 
-$printer -> text($this->DosCol("IVA $:", 40, Helpers::Format(Helpers::Impuesto(Helpers::STotal($data["total"], $data['config_imp']), $data['config_imp'])), 20));
+$printer -> text($this->DosCol("IVA $:", 40, Helpers::Format(Helpers::Impuesto(Helpers::STotal($data["total"], $data['config_imp']), $data['config_imp'])), 10));
 
 
-$printer -> text($this->DosCol("TOTAL $:", 40, Helpers::Format($data["total"]), 20));
+$printer -> text($this->DosCol("TOTAL $:", 40, Helpers::Format($data["total"]), 10));
 
 
 
-$printer -> text("____________________________________________________________");
+$printer -> text("_______________________________________________________");
 $printer->feed();
 
 if($data["efectivo"] != 0){
@@ -99,17 +101,17 @@ if($data["efectivo"] != 0){
   $efectivo = $data["total"];
 }
 
-$printer -> text($this->DosCol("Efectivo $:", 40, Helpers::Format($efectivo), 20));
+$printer -> text($this->DosCol("Efectivo $:", 40, Helpers::Format($efectivo), 10));
 
 //cambio
-$printer -> text($this->DosCol("Cambio $:", 40, Helpers::Format($cambio), 20));
+$printer -> text($this->DosCol("Cambio $:", 40, Helpers::Format($cambio), 10));
 
 
-$printer -> text("____________________________________________________________");
+$printer -> text("_______________________________________________________");
 $printer->feed();
 
 
-$printer -> text($this->DosCol(date("d-m-Y"), 30, date("H:i:s"), 30));
+$printer -> text($this->DosCol(date("d-m-Y"), 30, date("H:i:s"), 20));
 
 $printer -> text("Cajero: " . $data["cajero"]);
 
@@ -253,8 +255,8 @@ $printer->close();
 
  public function Item($cant,  $name = '', $price = '', $total = '', $dollarSign = false)
     {
-        $rightCols = 10;
-        $leftCols = 42;
+        $rightCols = 8;
+        $leftCols = 38;
         if ($dollarSign) {
             $leftCols = $leftCols / 2 - $rightCols / 2;
         }
