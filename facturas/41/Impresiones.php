@@ -152,7 +152,7 @@ public function Factura($data){
     
     
     
-    $oi=75;
+    $oi=74;
     //// comienza la factura
     
     
@@ -178,7 +178,7 @@ public function Factura($data){
     
     
     
-    $oi=190; // salto de linea
+    $oi=191; // salto de linea
     
     
         foreach ($data["productos"] as $producto) {
@@ -218,7 +218,7 @@ public function Factura($data){
     printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
     
     
-    $oi=$oi+$n1+$n1+$n1+8;
+    $oi=$oi+$n1+$n1+$n1+10;
     printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
     
     
