@@ -89,19 +89,21 @@ public function Factura($data){
     
     
     /// salto de linea
-    $oi=429;
+    $oi=427;
     
     // valores en letras
     printer_draw_text($handle, Dinero::DineroEscrito($data["total"]), $col2, $oi);
     // echo wordwrap($cadena, 15, "<br>" ,FALSE);
     
-    
     // volores numericos
     printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
     
     
+    $oi=$oi+$n1+$n1;
+    printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
     
-    $oi=$oi+$n1+$n1+$n1+35;
+    
+    $oi=$oi+$n1+32;
     printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
     
     
