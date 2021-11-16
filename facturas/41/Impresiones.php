@@ -239,7 +239,7 @@ public function Factura($data){
     
     
     
-     public function Exportacion($data){
+     public function Exportaciones($data){
     
     
         $txt1   = "15"; 
