@@ -242,23 +242,23 @@ public function Factura($data){
      public function Exportacion($data){
     
     
-    $txt1   = "15"; 
-    $txt2   = "5";
-    $txt3   = "0";
-    $txt4   = "0";
-    $n1   = "16";
-    $n2   = "60";
-    $n3   = "30";
-    $n4   = "0";
-    
-    
-    $col1 = 30;
-    $col2 = 70;
-    $col3 = 400;
-    $col4 = 550;
-    $col5 = 500;
-    // $print
-    $print = "FACTURA";
+        $txt1   = "15"; 
+        $txt2   = "5";
+        $txt3   = "0";
+        $txt4   = "0";
+        $n1   = "16";
+        $n2   = "60";
+        $n3   = "30";
+        $n4   = "0";
+        
+        
+        $col1 = 38;
+        $col2 = 89;
+        $col3 = 370;
+        $col4 = 550;
+        $col5 = 500;
+        // $print
+        $print = "FACTURA";
     
     $handle = printer_open($print);
     printer_set_option($handle, PRINTER_MODE, "RAW");
@@ -272,22 +272,32 @@ public function Factura($data){
     
     
     
-    $oi=100;
+    $oi=74;
     //// comienza la factura
     
     
     
     $oi=$oi+$n1;
-    printer_draw_text($handle, $data["nombre"], 95, $oi+$n1);
-    printer_draw_text($handle, date("d") . "             " . Fechas::MesEscrito(date("m")) ."                        " . date("Y"), 400, $oi);
+    printer_draw_text($handle, date("d") . " " . Fechas::MesEscrito(date("m")) ."" . date("Y"), 400, $oi);
     
     $oi=$oi+$n1;
-    printer_draw_text($handle, $data["direccion"], 110, $oi+$n1);
+    printer_draw_text($handle, $data["cliente"], 250, $oi);
+
+
+    $oi=$oi+$n1+$n1;
+    printer_draw_text($handle, $data["direccion"], 100, $oi);
+
+    $oi=$oi+$n1;
+    printer_draw_text($handle, $data["documento"], 100, $oi);
+
+    $oi=$oi+$n1;
+    printer_draw_text($handle, $data["telefono"], 130, $oi);
     
-    printer_draw_text($handle, $data["documento"], 110, $oi+$n1+$n1);
+
     
     
-    $oi=190; // salto de linea
+    
+    $oi=191; // salto de linea
     
     
         foreach ($data["productos"] as $producto) {
@@ -306,21 +316,24 @@ public function Factura($data){
     
     
     /// salto de linea
-    $oi=535;
+    $oi=427;
     
     // valores en letras
     printer_draw_text($handle, Dinero::DineroEscrito($data["total"]), $col2, $oi);
     // echo wordwrap($cadena, 15, "<br>" ,FALSE);
     
-    
     // volores numericos
     printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
     
     
+
     
-    // $oi=$oi+$n1+$n1+$n1+$n1+20;
-    // printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
+    $oi=$oi+$n1+32;
+    printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
     
+
+
+
     
     printer_delete_font($font);
     
