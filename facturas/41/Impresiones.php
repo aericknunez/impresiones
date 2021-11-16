@@ -254,7 +254,7 @@ public function Factura($data){
         
         $col1 = 38;
         $col2 = 89;
-        $col3 = 410;
+        $col3 = 430;
         $col4 = 550;
         $col5 = 500;
         // $print
@@ -297,7 +297,7 @@ public function Factura($data){
     
     
     
-    $oi=190; // salto de linea
+    $oi=208; // salto de linea
     
     
         foreach ($data["productos"] as $producto) {
@@ -316,19 +316,22 @@ public function Factura($data){
     
     
     /// salto de linea
-    $oi=410;
+    $oi=406;
     
+        // volores numericos
+    printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
+    
+    $oi=415;
+
     // valores en letras
     printer_draw_text($handle, Dinero::DineroEscrito($data["total"]), $col2, $oi);
     // echo wordwrap($cadena, 15, "<br>" ,FALSE);
     
-    // volores numericos
-    printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
-    
+
     
 
     
-    $oi=$oi+$n1+32;
+    $oi=$oi+$n1+20;
     printer_draw_text($handle, Helpers::Format($data["total"]), $col4, $oi);
     
 
