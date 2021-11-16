@@ -175,6 +175,7 @@ public function Factura($data){
     printer_draw_text($handle, $data["departamento"], 130, $oi);
     
     $oi=$oi+$n1;
+    printer_draw_text($handle, "CONTADO", 215, $oi);
     
     
     
