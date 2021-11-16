@@ -252,8 +252,8 @@ public function Factura($data){
         $n4   = "0";
         
         
-        $col1 = 38;
-        $col2 = 89;
+        $col1 = 41;
+        $col2 = 99;
         $col3 = 430;
         $col4 = 550;
         $col5 = 500;
@@ -297,7 +297,7 @@ public function Factura($data){
     
     
     
-    $oi=212; // salto de linea
+    $oi=215; // salto de linea
     
     
         foreach ($data["productos"] as $producto) {
