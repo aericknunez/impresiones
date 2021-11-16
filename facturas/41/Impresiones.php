@@ -278,14 +278,14 @@ public function Factura($data){
     
     
     $oi=$oi+$n1;
-    printer_draw_text($handle, date("d") . " " . Fechas::MesEscrito(date("m")) ."" . date("Y"), 400, $oi);
+    printer_draw_text($handle, date("d") . " " . Fechas::MesEscrito(date("m")) ."" . date("Y"), 450, $oi);
     
-    $oi=$oi+$n1;
-    printer_draw_text($handle, $data["cliente"], 250, $oi);
+    $oi=$oi+$n1+5;
+    printer_draw_text($handle, $data["nombre"], 250, $oi);
 
 
-    $oi=$oi+$n1+$n1;
-    printer_draw_text($handle, $data["direccion"], 100, $oi);
+    $oi=$oi+$n1+$n1+5;
+    printer_draw_text($handle, $data["direccion"], 115, $oi);
 
     $oi=$oi+$n1;
     printer_draw_text($handle, $data["documento"], 100, $oi);
@@ -297,7 +297,7 @@ public function Factura($data){
     
     
     
-    $oi=191; // salto de linea
+    $oi=109; // salto de linea
     
     
         foreach ($data["productos"] as $producto) {
@@ -316,7 +316,7 @@ public function Factura($data){
     
     
     /// salto de linea
-    $oi=427;
+    $oi=410;
     
     // valores en letras
     printer_draw_text($handle, Dinero::DineroEscrito($data["total"]), $col2, $oi);
