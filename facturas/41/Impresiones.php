@@ -35,8 +35,8 @@ public function Factura($data){
     $n4   = "0";
     
     
-    $col1 = 35;
-    $col2 = 82;
+    $col1 = 38;
+    $col2 = 89;
     $col3 = 370;
     $col4 = 550;
     $col5 = 500;
