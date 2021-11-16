@@ -135,7 +135,6 @@ $printer->close();
 
 
 public function Factura($efectivo, $numero){
-  $db = new dbConn();
 
 $txt1   = "15"; 
 $txt2   = "5";
@@ -293,7 +292,6 @@ printer_close($handle);
 
 
  public function CreditoFiscal($efectivo, $numero){
-  $db = new dbConn();
 
 $txt1   = "15"; 
 $txt2   = "5";
@@ -463,7 +461,6 @@ printer_close($handle);
 
 
 public function Exportaciones($efectivo, $numero){
-    $db = new dbConn();
   
   $txt1   = "15"; 
   $txt2   = "5";
