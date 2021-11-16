@@ -287,7 +287,7 @@ public function Factura($data){
     $oi=$oi+$n1+$n1+5;
     printer_draw_text($handle, $data["direccion"], 115, $oi);
 
-    $oi=$oi+$n1;
+    $oi=$oi+$n1+4;
     printer_draw_text($handle, $data["documento"], 100, $oi);
 
     $oi=$oi+$n1;
@@ -297,7 +297,7 @@ public function Factura($data){
     
     
     
-    $oi=208; // salto de linea
+    $oi=212; // salto de linea
     
     
         foreach ($data["productos"] as $producto) {
