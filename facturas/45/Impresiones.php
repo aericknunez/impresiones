@@ -296,7 +296,7 @@ public function Factura($data){
   
   
   
-  $oi=428; // salto de linea
+  $oi=228; // salto de linea
   
   
       foreach ($data["productos"] as $producto) {
