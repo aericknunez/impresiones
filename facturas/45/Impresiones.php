@@ -261,30 +261,39 @@ public function Factura($data){
   
   
   
-  $oi=74;
+  $oi=100;
   //// comienza la factura
   
   
   
   $oi=$oi+$n1;
   printer_draw_text($handle, $data["cliente"], 95, $oi);
-  printer_draw_text($handle, date("d") . " " . Fechas::MesEscrito(date("m")) ."" . date("Y"), 400, $oi);
+  printer_draw_text($handle, date("d") . " " . Fechas::MesEscrito(date("m")) ."" . date("Y"), 450, $oi);
   
+
   $oi=$oi+$n1;
-  printer_draw_text($handle, $data["registro"], 430, $oi);
+  printer_draw_text($handle, $data["cliente"], 100, $oi);
 
   $oi=$oi+$n1;
   printer_draw_text($handle, $data["direccion"], 100, $oi);
-  printer_draw_text($handle, $data["documento"], 400, $oi);
+
 
   $oi=$oi+$n1;
-  printer_draw_text($handle, $data["giro"], 400, $oi);
+  printer_draw_text($handle, $data["municipio"], 130, $oi);
+  printer_draw_text($handle, $data["registro"], 480, $oi);
+
+
 
   $oi=$oi+$n1;
   printer_draw_text($handle, $data["departamento"], 130, $oi);
+  printer_draw_text($handle, $data["documento"], 480, $oi);
+
+  $oi=$oi+$n1;
+  printer_draw_text($handle, $data["giro"], 450, $oi);
+
   
   $oi=$oi+$n1;
-  printer_draw_text($handle, "CONTADO", 215, $oi);
+  printer_draw_text($handle, "CONTADO", 500, $oi);
   
   
   
