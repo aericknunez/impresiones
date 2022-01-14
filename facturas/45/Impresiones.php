@@ -243,7 +243,7 @@ public function Factura($data){
       
       $col1 = 38;
       $col2 = 89;
-      $col3 = 370;
+      $col3 = 400;
       $col4 = 550;
       $col5 = 500;
       // $print
