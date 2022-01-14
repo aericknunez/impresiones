@@ -131,8 +131,6 @@ $printer->close();
 
 
 
-
-
 public function Factura($data){
 
 
