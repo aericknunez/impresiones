@@ -145,7 +145,7 @@ public function Factura($data){
   
   
   $col1 = 38;
-  $col2 = 89;
+  $col2 = 98;
   $col3 = 370;
   $col4 = 550;
   $col5 = 500;
@@ -169,9 +169,9 @@ public function Factura($data){
   
   
   
-  $oi=$oi+$n1;
+  $oi=$oi+$n1+$n1;
   printer_draw_text($handle, $data["nombre"], 95, $oi+$n1);
-  printer_draw_text($handle, date("d") . " " . Fechas::MesEscrito(date("m")) ."" . date("Y"), 400, $oi);
+  printer_draw_text($handle, date("d") . " " . Fechas::MesEscrito(date("m")) ."  " . date("Y"), 400, $oi);
   
   $oi=$oi+$n1;
   printer_draw_text($handle, $data["direccion"], 110, $oi+$n1);
@@ -179,7 +179,7 @@ public function Factura($data){
   printer_draw_text($handle, $data["documento"], 110, $oi+$n1+$n1);
   
   
-  $oi=174; // salto de linea
+  $oi=180; // salto de linea
   
   
       foreach ($data["productos"] as $producto) {
@@ -198,10 +198,10 @@ public function Factura($data){
   
   
   /// salto de linea
-  $oi=427;
+  $oi=455;
   
   // valores en letras
-  printer_draw_text($handle, Dinero::DineroEscrito($data["total"]), $col2, $oi);
+  printer_draw_text($handle, Dinero::DineroEscrito($data["total"]), $col2-10, $oi);
   // echo wordwrap($cadena, 15, "<br>" ,FALSE);
   
   // volores numericos

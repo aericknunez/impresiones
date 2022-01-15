@@ -3,7 +3,7 @@ use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
 
-// AutoMotriz
+// Al MArket
 
 class Impresiones{
     public function __construct() { 
