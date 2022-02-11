@@ -3,7 +3,7 @@ class Dinero{
 
 public static function DineroEscrito($cantidad) {
 
-	$cant = number_format($cantidad,2,'.',','); // establezco dos decimales al numero
+	$cant = number_format($cantidad,2,'.',''); // establezco dos decimales al numero
 	$decimales =  substr($cant, -2);
 	$numero =  substr($cant, 0, -3);
 
@@ -53,23 +53,27 @@ if( $n >= 100) {
 }
 
 public static function miles($n) {
-	if($n > 999) {
-	if( $n == 1000) {
-		return 'MIL';
-	}
-		else {
-		$l = strlen($n);
-		$c = (int)substr($n,0,$l-3);
-		$x = (int)substr($n,-3);
-		if($c == 1) {$cadena = 'MIL '.self::centenas($x);}
-		else if($x != 0) {$cadena = self::centenas($c).' MIL '.self::centenas($x);}
-		else $cadena = self::centenas($c). ' MIL';
-		return $cadena;
-		}
-		} else { 
-			return self::centenas($n);
+		if($n == 1000) {
+			return 'MIL';
+		} else {
+			$l = strlen($n); // cantidad de caracteres
+			$c = (int)substr($n,0,$l-3); // miles
+			$x = (int)substr($n,-3); //centenas
+			if($c == 1) {
+				$cadena = 'MIL '.self::centenas($x);
 			}
-	}
+			else if($x != 0) {
+				$cadena = self::centenas($c).' MIL '.self::centenas($x);
+			}
+			else { 
+				$cadena = self::centenas($c). ' MIL';
+			}
+			return $cadena;
+		}
+
+}
+
+
 
 public static function millones($n) {
 	if($n == 1000000) {
@@ -97,6 +101,8 @@ public static function convertir($n) {
 		case ($n >= 1000 && $n <= 999999): return self::miles($n); break;
 		case ($n >= 1000000): return self::millones($n);
 		}
+
+		// return $n;
 }
 
 
